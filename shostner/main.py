@@ -6,7 +6,8 @@ app = FastAPI()
 
 
 urls = {
-    "abc": "http://www.google.com.br"
+    "google": "http://www.google.com.br",
+    "me": "http://jlugao.com"
 }
 
 
