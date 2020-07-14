@@ -21,3 +21,5 @@ RUN bash -c "if [ $INSTALL_DEV == 'true' ] ; then poetry install --no-root ; els
 
 COPY ./ /app
 ENV PYTHONPATH=/app
+
+CMD ["uvicorn", "shostner.main:app", "--host", "0.0.0.0", "--port", "80"]
