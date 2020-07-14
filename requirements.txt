@@ -3,7 +3,6 @@ fastapi==0.59.0
 h11==0.9.0
 httptools==0.1.1
 pydantic==1.6
--e git+git@github.com:blurg/shostner.git@36ddb00e3f2d4e3f09fa4afe022ee32f0407906e#egg=shostner
 starlette==0.13.4
 uvicorn==0.11.5
 uvloop==0.14.0
