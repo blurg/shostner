@@ -8,6 +8,7 @@ authors = ["jlugao <joaolhullier@gmail.com>"]
 python = "^3.7"
 fastapi = "^0.59.0"
 uvicorn = "^0.11.5"
+motor = "^2.1.0"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.4.3"

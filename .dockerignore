@@ -1,0 +1,3 @@
+mongodbdata/
+.vscode/
+.pytest_cache/
