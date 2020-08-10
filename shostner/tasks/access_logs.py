@@ -1,11 +1,22 @@
+from motor.motor_asyncio import AsyncIOMotorClient
 from ..main import urls
+from ..controllers.data import create_log
+from ..models.data import Log
 
-def log_access_info(shortened_url: str, user_agent: str, referer: str, ip: str, language: str):
-    print("Just Redirected a request with the following data")
-    print(f"Shortened URL: {shortened_url}")
-    print(f"Targer URL: {urls.get(shortened_url, 'http://www.facebook.com')}")
-    print(f"User Agent: {user_agent}")
-    print(f"Referer: {referer}")
-    print(f"Ip: {ip}")
-    print(f"Language Preferences: {language}")
-    print("====================")
+async def log_access_info(shortened_url: str, 
+                    long_url: str , 
+                    user_agent: str, 
+                    referer: str, 
+                    ip: str, 
+                    language: str,
+                    db: AsyncIOMotorClient
+                    ):
+    log = Log(
+        shortened_url = shortened_url , 
+        long_url = long_url, 
+        user_agent = user_agent, 
+        referer = referer, 
+        ip = ip, 
+        language = language
+    )
+    await create_log(db, log)

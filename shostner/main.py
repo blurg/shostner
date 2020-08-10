@@ -16,9 +16,9 @@ def get_app() -> FastAPI:
     app = FastAPI()
     app.add_event_handler("startup", connect_to_mongo)
     app.add_event_handler("shutdown", close_mongo_connection)
-    app.include_router(data_router)
-    app.include_router(links_router)
+    app.include_router(data_router, prefix="/logs")
     app.include_router(users_router, prefix="/users")
+    app.include_router(links_router)
     return app
 
 app = get_app()

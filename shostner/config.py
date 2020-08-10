@@ -13,3 +13,5 @@ ALLOWED_HOSTS = CommaSeparatedStrings(config("ALLOWED_HOSTS", default=""))
 MONGODB_URL = config("DB", default="")  # deploying without docker-compose
 
 database_name = "shostner"
+
+DEFAULT_URL="http://jlugao.com"
