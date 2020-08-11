@@ -1,3 +1,4 @@
+from typing import Optional
 from pydantic import BaseModel, EmailStr, SecretStr
 from datetime import datetime
 
@@ -16,3 +17,10 @@ class UserIn(UserBase):
 
 class UserOut(UserBase):
     id: str
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+
+class TokenData(BaseModel):
+    username: Optional[str] = None

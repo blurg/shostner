@@ -15,3 +15,6 @@ MONGODB_URL = config("DB", default="")  # deploying without docker-compose
 database_name = "shostner"
 
 DEFAULT_URL="http://jlugao.com"
+
+ALGORITHM = "HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES = 30

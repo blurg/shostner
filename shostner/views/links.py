@@ -1,3 +1,5 @@
+from shostner.controllers.users import get_current_user
+from shostner.models.users import UserOut
 from shostner.models.links import Link, LinkOut
 from fastapi import APIRouter, Header, Request, BackgroundTasks, Depends
 from ..tasks.access_logs import log_access_info
@@ -14,14 +16,21 @@ def id_to_str(value: dict) -> dict:
     return value
 
 @router.get("/urls", response_model=List[LinkOut])
-async def list_urls(db: AsyncIOMotorClient = Depends(get_database)):
+async def list_urls(
+                    db: AsyncIOMotorClient = Depends(get_database),
+                    current_user: UserOut = Depends(get_current_user)
+                    ):
     """
     List Created Urls
     """
     return await fetch_all_links(db)
 
 @router.post("/urls", response_model=LinkOut)
-async def create_url(link: Link, db: AsyncIOMotorClient = Depends(get_database)):
+async def create_url(
+                    link: Link, 
+                    db: AsyncIOMotorClient = Depends(get_database),
+                    current_user: UserOut = Depends(get_current_user)
+                    ):
     """
     Creates a shortened url with:
     - url_long
